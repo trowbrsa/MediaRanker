@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
   end
 
   def create
+    @title = "Add a movie"
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movie_path(@movie)
@@ -28,21 +29,27 @@ class MoviesController < ApplicationController
   end
 
   def edit
+    @title = "Edit a movie"
     id = params[:id]
     @movie = Movie.find(id)
     @action = :update
   end
 
+  def update
+    id = params[:id]
+    @movie = Movie.find(id)
+    @movie.update(movie_params[:movie])
+    redirect_to movie_path(params[:id])
+  end
+
   def destroy
     Movie.destroy(params[:id])
     redirect_to movies_path
-
-
   end
 
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :director, :ranking, :description)
+    params.permit(movie: [:title, :director, :ranking, :description])
   end
 end

@@ -1,0 +1,9 @@
+<h1>View all books</h1>
+
+<ul>
+<% @books.each do |book| %>
+  <li><%= link_to book.title, book_path(book.id) %></li>
+<% end %>
+</ul>
+
+<%= link_to "View all media", root_url %>  <%= link_to "Add a book", new_book_path %>

@@ -1,7 +1,9 @@
 <%= @movie.title %>
 <br>
 <%= @movie.director %>
+<br>
 <%= @movie.description %>
-
+<br>
+<br>
 <%= link_to "Edit", edit_movie_path %>
 <%= link_to "Delete", movie_path, method: :delete %>

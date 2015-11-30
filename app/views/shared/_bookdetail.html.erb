@@ -1,14 +1,15 @@
 <h1><%= @title %></h1>
-  <%= form_for @movie, url: {action: @action} do |f| %>
+  <%= form_for @book, url: {action: @action} do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
-  <%= f.label :director %>
-  <%= f.text_field :director %>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
   <br>
   <br>
   <%= f.label :description %>
   <%= f.text_area :description %>
+  <br>
   <br>
   <%= f.submit "Save" %>
   <% end %>
