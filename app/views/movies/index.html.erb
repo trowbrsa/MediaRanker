@@ -1,0 +1,9 @@
+<h1>View all movies</h1>
+
+<ul>
+<% @movies.each do |movie| %>
+  <%= movie.title %>
+<% end %>
+</ul>
+
+<%= link_to "View all media", root_url %>  <%= link_to "Add a movie", new_movie_path %>
