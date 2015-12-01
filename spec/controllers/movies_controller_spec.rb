@@ -60,13 +60,13 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe "PATCH 'update'" do
-    let(:movie) do
+    let(:update_params) do
       { id: movie.id,
         movie: {
           title: "Something",
           director: "Uncle Joe",
           ranking: 0,
-          description: "description"
+          description: "new description"
         }
       }
     end
@@ -79,8 +79,11 @@ RSpec.describe MoviesController, type: :controller do
 
     it "redirects to show page" do
 
-      patch :update, create_params
+      patch :update, update_params
       expect(subject).to redirect_to movie_path(movie.id)
     end
   end
+
+
+
 end
