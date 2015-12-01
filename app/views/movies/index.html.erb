@@ -2,7 +2,7 @@
 
 <ul>
 <% @movies.each do |movie| %>
-  <li><%= link_to movie.title, movie_path(movie.id) %></li>
+  <li>Ranked: <%= movie.ranking %> | <%= link_to movie.title, movie_path(movie.id) %> <%= button_to "Upvote", upvote_movie_path(movie.id) %> </li>
 <% end %>
 </ul>
 

@@ -7,7 +7,7 @@
 Ranked: <%= @movie.ranking %>
 <br>
 <br>
-<%= button_to "Upvote", action: :upvote, method: :post %>
+<%= button_to "Upvote", upvote_movie_path %>
 <br>
 <%= link_to "Edit", edit_movie_path %>
 <%= link_to "Delete", movie_path, method: :delete %>
