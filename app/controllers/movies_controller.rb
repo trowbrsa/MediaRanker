@@ -47,6 +47,26 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def edit
+    @title = "Edit a movie"
+    id = params[:id]
+    @movie = Movie.find(id)
+    @action = :update
+  end
+
+  def upvote
+    id = params[:id]
+    @movie = Movie.find(id)
+    ranking = @movie.ranking
+    @r = ranking.to_i
+    @r += 1
+    ranking = @r
+    @movie.update(movie_params[:movie])
+    redirect_to movies_path
+  end
+
+  
+
   private
 
   def movie_params

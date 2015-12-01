@@ -4,6 +4,11 @@
 <br>
 <%= @movie.description %>
 <br>
+Ranking:
+<%= @movie.ranking %>
+<br>
+<br>
+<%= button_to "Upvote", action: :upvote, method: :patch %>
 <br>
 <%= link_to "Edit", edit_movie_path %>
 <%= link_to "Delete", movie_path, method: :delete %>
