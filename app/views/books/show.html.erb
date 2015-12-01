@@ -3,6 +3,9 @@
 <%= @book.author %>
 <br>
 <%= @book.description %>
-
+<br>
+Ranking:
+<% end %>
+<br>
 <%= link_to "Edit", edit_book_path %>
 <%= link_to "Delete", book_path, method: :delete %>

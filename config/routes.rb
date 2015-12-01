@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
 root 'movies#home'
 
-get '/movies/:id/upvote' => 'movies#upvote'
-patch '/movies/:id/upvote' => 'movies#upvote'
+post '/movies/:id/upvote' => 'movies#upvote'
 
   resources :movies, :books, :albums
   # The priority is based upon order of creation: first created -> highest priority.
