@@ -35,11 +35,18 @@ class MoviesController < ApplicationController
     @action = :update
   end
 
+## use attributes, save it to a local variable (its a hash)
+# then use .save boolean to test against
   def update
     id = params[:id]
     @movie = Movie.find(id)
-    @movie.update(movie_params[:movie])
-    redirect_to movie_path(params[:id])
+    @movie.attributes = movie_params[:movie]
+      if @movie.save
+    # @movie.update(movie_params[:movie])
+      redirect_to movie_path(params[:id])
+      else
+        redirect_to edit_movie_path(params[:id])
+      end
   end
 
   def destroy
@@ -62,8 +69,6 @@ class MoviesController < ApplicationController
     @movie.update(ranking: r)
     redirect_to :back
   end
-
-
 
   private
 
