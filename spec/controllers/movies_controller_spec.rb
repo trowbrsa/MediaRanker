@@ -7,9 +7,26 @@ RSpec.describe MoviesController, type: :controller do
       movie: {
         title: "Something",
         director: "Uncle Bob",
-        ranking: 0,
+        ranking: 3,
         description: "description"
       }
+    }
+  end
+
+  let(:update_params) do
+    { id: movie.id,
+      movie: {
+        title: "Something",
+        director: "Uncle Joe",
+        ranking: 0,
+        description: "new description"
+      }
+    }
+  end
+
+  let(:bad_params) do
+    {id: movie.id,
+      movie: {title: ""}
     }
   end
 
@@ -32,6 +49,7 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe "GET 'edit'" do
+
     it "renders new view" do
       get :edit, id: movie.id
       expect(subject). to render_template :edit
@@ -48,12 +66,6 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "POST 'create'" do
 
-    let(:bad_params) do
-      {
-        movie: {}
-      }
-    end
-
     it "redirects to show page" do
     post :create, create_params
     new_movie = Movie.last
@@ -63,30 +75,12 @@ RSpec.describe MoviesController, type: :controller do
     it "renders new template on error" do
     post :create, bad_params
     expect(subject).to render_template :new
-
     end
   end
 
   describe "PATCH 'update'" do
-    let(:update_params) do
-      { id: movie.id,
-        movie: {
-          title: "Something",
-          director: "Uncle Joe",
-          ranking: 0,
-          description: "new description"
-        }
-      }
-    end
-
-    let(:bad_params) do
-      {id: movie.id,
-        movie: {title: ""}
-      }
-    end
 
     it "redirects to show page" do
-
       patch :update, update_params
       expect(subject).to redirect_to movie_path(movie.id)
     end
@@ -99,20 +93,24 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe "DELETE 'destroy'" do
-    let(:update_params) do
-      { id: movie.id,
-        movie: {
-          title: "Something",
-          director: "Uncle Joe",
-          ranking: 0,
-          description: "new description"
-        }
-      }
-    end
-
     it "redirects to index page" do
       delete :destroy, update_params
       expect(subject).to redirect_to movies_path
     end
   end
+
+
+    describe "POST ''#upvote_movie'" do
+
+    before :each do
+      request.env["HTTP_REFERER"] = "from_where_I_was"
+    end
+
+    it "increments :votes" do
+      patch :upvote, id: movie.id
+      movie.reload
+      expect(movie.ranking).to eq 4
+      expect(subject).to redirect_to "from_where_I_was"
+    end
+  end 
 end
