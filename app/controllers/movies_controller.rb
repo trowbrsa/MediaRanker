@@ -16,6 +16,7 @@ class MoviesController < ApplicationController
   def create
     @title = "Add a movie"
     @movie = Movie.new(movie_params[:movie])
+    @movie.update(:ranking => 0)
     if @movie.save
       redirect_to movie_path(@movie)
     else
@@ -38,6 +39,7 @@ class MoviesController < ApplicationController
 ## use attributes, save it to a local variable (its a hash)
 # then use .save boolean to test against
   def update
+    @value = params[:ranking]
     id = params[:id]
     @movie = Movie.find(id)
     @movie.attributes = movie_params[:movie]
