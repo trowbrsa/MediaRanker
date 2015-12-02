@@ -42,7 +42,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find(id)
     @movie.attributes = movie_params[:movie]
       if @movie.save
-    # @movie.update(movie_params[:movie])
       redirect_to movie_path(params[:id])
       else
         redirect_to edit_movie_path(params[:id])
@@ -52,13 +51,6 @@ class MoviesController < ApplicationController
   def destroy
     Movie.destroy(params[:id])
     redirect_to movies_path
-  end
-
-  def edit
-    @title = "Edit a movie"
-    id = params[:id]
-    @movie = Movie.find(id)
-    @action = :update
   end
 
   def upvote

@@ -31,12 +31,12 @@ RSpec.describe MoviesController, type: :controller do
     end
   end
 
-  # describe "GET 'edit'" do
-  #   it "renders new view" do
-  #     get :new
-  #     expect(subject). to render_template :new
-  #   end
-  # end
+  describe "GET 'edit'" do
+    it "renders new view" do
+      get :new
+      expect(subject). to render_template :new
+    end
+  end
 
   describe "GET 'show'" do
 
