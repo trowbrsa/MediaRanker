@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to movie_path(@movie)
     else
-      render "new"
+      render :new
     end
   end
 
@@ -44,7 +44,9 @@ class MoviesController < ApplicationController
       if @movie.save
       redirect_to movie_path(params[:id])
       else
-        redirect_to edit_movie_path(params[:id])
+        @title = "Edit a movie"
+        @action = :update
+        render :edit
       end
   end
 

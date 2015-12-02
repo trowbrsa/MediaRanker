@@ -33,8 +33,8 @@ RSpec.describe MoviesController, type: :controller do
 
   describe "GET 'edit'" do
     it "renders new view" do
-      get :new
-      expect(subject). to render_template :new
+      get :edit, id: movie.id
+      expect(subject). to render_template :edit
     end
   end
 
@@ -63,6 +63,7 @@ RSpec.describe MoviesController, type: :controller do
     it "renders new template on error" do
     post :create, bad_params
     expect(subject).to render_template :new
+
     end
   end
 
@@ -79,8 +80,8 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     let(:bad_params) do
-      {
-        movie: {}
+      {id: movie.id,
+        movie: {title: ""}
       }
     end
 
@@ -90,9 +91,9 @@ RSpec.describe MoviesController, type: :controller do
       expect(subject).to redirect_to movie_path(movie.id)
     end
 
-    it "renders new template on error" do
-    post :create, bad_params
-    expect(subject).to render_template :new
+    it "renders edit template on error" do
+    post :update, bad_params
+    expect(subject).to render_template :edit
     end
 
   end
