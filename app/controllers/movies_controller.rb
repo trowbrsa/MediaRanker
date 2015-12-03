@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
 
   def home
-    # some kind of code that only shows top 10 of each category by ranking
+    @movies = Movie.all
+    # make it so only top 10 show up
   end
 
   def index

@@ -44,7 +44,7 @@ RSpec.describe MoviesController, type: :controller do
   describe "GET 'new'" do
     it "renders new view" do
       get :new
-      expect(subject). to render_template :new
+      expect(subject).to render_template :new
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe MoviesController, type: :controller do
 
     it "renders new view" do
       get :edit, id: movie.id
-      expect(subject). to render_template :edit
+      expect(subject).to render_template :edit
     end
   end
 
@@ -112,5 +112,5 @@ RSpec.describe MoviesController, type: :controller do
       expect(movie.ranking).to eq 4
       expect(subject).to redirect_to "from_where_I_was"
     end
-  end 
+  end
 end
