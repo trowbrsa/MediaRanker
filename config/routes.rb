@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
 
-root 'movies#home'
+root 'home#index'
+
+resources :media, except: :index
+resources :movies, controller: 'media', type: 'Movie'
+resources :books, controller: 'media', type: 'Book'
+resources :albums, controller: 'media', type: 'Album'
+
+
 
 post '/movies/:id/upvote' => 'movies#upvote', as: :upvote_movie
 
-  resources :movies, :books, :albums
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

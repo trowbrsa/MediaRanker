@@ -1,0 +1,22 @@
+<div class="col-lg-12">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Top Movies</h1>
+        <% @movies.each do |movie| %>
+      <h2><%= link_to movie.title, movie_path(movie.id) %>
+        <small>Ranked: <%= movie.ranking %> </small>
+      </h2>
+      <% end %>
+      <%= link_to "View More Movies", movies_path %>
+    </div>
+    <div class='col-md-4'>
+      <h1>Top Books</h>
+      <h2>Book Loop</h2>
+    </div>
+    <div class='col-md-4'>
+      <h1>Top Albums</h1>
+      <h2>Album Loop</h2>
+    </div>
+    </div>
+  </div>
+</div>
