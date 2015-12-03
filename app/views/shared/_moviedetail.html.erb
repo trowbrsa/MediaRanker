@@ -1,4 +1,9 @@
 <h1><%= @title %></h1>
+
+  <% @movie.errors.each do |column, message| %>
+  <li><%=column.capitalize %> <%= message %></li>
+  <% end %>
+
   <%= form_for @movie, url: {action: @action} do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
