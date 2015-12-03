@@ -9,8 +9,11 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+
   def create
-    @book = Book.new(book_params)
+    @title = "Add a book"
+    @book = Book.new(book_params[:book])
+    @book.update(:ranking => 0)
     if @book.save
       redirect_to book_path(@book)
     else

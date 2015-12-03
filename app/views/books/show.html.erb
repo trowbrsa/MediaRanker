@@ -4,8 +4,7 @@
 <br>
 <%= @book.description %>
 <br>
-Ranking:
-<% end %>
+Ranking: <%= @book.ranking %>
 <br>
 <%= link_to "Edit", edit_book_path %>
 <%= link_to "Delete", book_path, method: :delete %>
