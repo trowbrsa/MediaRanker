@@ -1,0 +1,11 @@
+<%= @album.title %>
+<br>
+<%= @album.artist %>
+<br>
+<%= @album.description %>
+<br>
+Ranking:
+<% end %>
+<br>
+<%= link_to "Edit", edit_album_path %>
+<%= link_to "Delete", album_path, method: :delete %>
