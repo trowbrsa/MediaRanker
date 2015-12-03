@@ -60,10 +60,10 @@ class MoviesController < ApplicationController
 
   def upvote
     id = params[:id]
-    @movie = Movie.find(id)
-    r = @movie.ranking
+    movie = Movie.find(id)
+    r = movie.ranking
     r += 1
-    @movie.update(ranking: r)
+    movie.update(ranking: r)
     redirect_to :back
   end
 
