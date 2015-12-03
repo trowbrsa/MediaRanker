@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 root 'movies#home'
 
 post '/movies/:id/upvote' => 'movies#upvote', as: :upvote_movie
+post '/albums/:id/upvote' => 'albums#upvote', as: :upvote_album
+post '/books/:id/upvote' => 'books#upvote', as: :upvote_book
 
   resources :movies, :books, :albums
   # The priority is based upon order of creation: first created -> highest priority.

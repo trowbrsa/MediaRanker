@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
 
   def home
     @movies = Movie.all
+    @books = Book.all
+    @albums = Album.all
     # make it so only top 10 show up
   end
 
