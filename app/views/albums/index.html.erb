@@ -7,8 +7,13 @@
         <th> Upvote </th>
       </tr>
     <% @albums.each do |album| %>
-      <td><%= album.ranking %><td><%= link_to album.title, album_path(album.id) %><td><%= button_for upvote_album_path %>
+      <tr>
+      <td><%= album.ranking %></td>
+      <td><%= link_to album.title, album_path(album.id) %></td>
+      <td><%= button_to "Upvote", upvote_album_path(album.id) %></td>
     <% end %>
+      </tr>
+    </tbody>
+  </table>
+<%= link_to "View all media", root_url, class: "btn btn-default" %>  <%= link_to "Add an album", new_album_path, class: "btn btn-default" %>
 </div>
-
-<%= link_to "View all media", root_url %>  <%= link_to "Add an album", new_album_path %>
