@@ -6,13 +6,11 @@ RSpec.describe MoviesController, type: :controller do
     Movie.create(create_params[:movie])
   end
 
-  let(:show_path) do
-     movie_path(medium.id)
-  end
+  # let(:medium_class) do
+  #     Movie
+  # end
 
-  
 
-  it_behaves_like "a medium controller"
 
   let(:create_params) do
     {
@@ -42,62 +40,13 @@ RSpec.describe MoviesController, type: :controller do
     }
   end
 
+  it_behaves_like "a medium controller", "movie_path", Movie, "movies_path"
+
+
   describe "GET 'home'" do
     it "renders the home view" do
       get :home
       expect(subject).to render_template :home
-    end
-  end
-
-
-  describe "POST 'create'" do
-
-    it "redirects to show page" do
-    post :create, create_params
-    new_movie = Movie.last
-    expect(subject).to redirect_to movie_path(new_movie.id)
-    end
-
-    it "renders new template on error" do
-    post :create, bad_params
-    expect(subject).to render_template :new
-    end
-  end
-
-  describe "PATCH 'update'" do
-
-    it "redirects to show page" do
-      patch :update, update_params
-      expect(subject).to redirect_to show_path
-    end
-
-    it "renders edit template on error" do
-    post :update, bad_params
-    expect(subject).to render_template :edit
-    end
-
-  end
-
-
-
-  describe "DELETE 'destroy'" do
-    it "redirects to index page" do
-      delete :destroy, update_params
-      expect(subject).to redirect_to movies_path
-    end
-  end
-
-    describe "POST ''#upvote_movie'" do
-
-    before :each do
-      request.env["HTTP_REFERER"] = "from_where_I_was"
-    end
-
-    it "increments :votes" do
-      patch :upvote, id: medium.id
-      medium.reload
-      expect(medium.ranking).to eq 4
-      expect(subject).to redirect_to "from_where_I_was"
     end
   end
 end
