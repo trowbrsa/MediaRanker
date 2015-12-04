@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
+
+  let(:medium) do
+    Movie.create(create_params[:movie])
+  end
+
   it_behaves_like "a medium"
 
   let(:create_params) do
@@ -31,25 +36,6 @@ RSpec.describe MoviesController, type: :controller do
     }
   end
 
-  let(:movie) do
-    Movie.create(create_params[:movie])
-  end
-
-  describe "GET 'edit'" do
-
-    it "renders new view" do
-      get :edit, id: movie.id
-      expect(subject).to render_template :edit
-    end
-  end
-
-  describe "GET 'show'" do
-
-    it "renders the show view" do
-      get :show, id: movie.id
-      expect(subject).to render_template :show
-    end
-  end
 
   describe "POST 'create'" do
 
@@ -85,7 +71,6 @@ RSpec.describe MoviesController, type: :controller do
       expect(subject).to redirect_to movies_path
     end
   end
-
 
     describe "POST ''#upvote_movie'" do
 

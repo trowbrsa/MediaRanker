@@ -13,7 +13,7 @@
       <h1>Top Books</h1>
         <% @books.each do |book| %>
         <h2><%= link_to book.title, book_path(book.id) %>
-          <small>Ranked: <%= book.ranking %> </small>
+          <small>Ranked: <%= book.ranking %></small>
         </h2>
         <% end %>
         <%= link_to "View More Books", books_path %>
