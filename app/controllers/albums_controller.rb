@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = Album.new(album_params[:album])
     if @album.save
       redirect_to album_path(@album)
     else

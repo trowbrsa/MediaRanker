@@ -4,8 +4,7 @@
 <br>
 <%= @album.description %>
 <br>
-Ranking:
-<% end %>
+Ranking: <%= @album.ranking %>
 <br>
 <%= link_to "Edit", edit_album_path %>
 <%= link_to "Delete", album_path, method: :delete %>
