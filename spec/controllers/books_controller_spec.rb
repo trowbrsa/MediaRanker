@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe BooksController, type: :controller do
 
   let(:medium) do
-    Movie.create(create_params[:book])
+    Book.create(create_params[:book])
   end
 
   it_behaves_like "a medium"
@@ -21,7 +21,7 @@ RSpec.describe BooksController, type: :controller do
   end
 
   let(:update_params) do
-    { id: book.id,
+    { id: medium.id,
       book: {
         title: "Something",
         author: "Uncle Joe",
@@ -32,12 +32,9 @@ RSpec.describe BooksController, type: :controller do
   end
 
   let(:bad_params) do
-    {id: book.id,
-      movie: {title: ""}
+    {id: medium.id,
+      book: {title: ""}
     }
   end
 
-  let(:book) do
-    Book.create(create_params[:book])
-  end
 end

@@ -1,5 +1,5 @@
 RSpec.shared_examples "a medium" do
-
+  
   describe "model validations" do
     it "requires a title" do
       medium = described_class.new

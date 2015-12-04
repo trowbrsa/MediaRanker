@@ -36,6 +36,13 @@ RSpec.describe MoviesController, type: :controller do
     }
   end
 
+  describe "GET 'home'" do
+    it "renders the home view" do
+      get :home
+      expect(subject).to render_template :home
+    end
+  end
+
 
   describe "POST 'create'" do
 
