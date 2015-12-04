@@ -6,7 +6,7 @@ RSpec.describe BooksController, type: :controller do
     Book.create(create_params[:book])
   end
 
-  it_behaves_like "a medium"
+  it_behaves_like "a medium controller"
 
 
   let(:create_params) do

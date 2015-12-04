@@ -6,7 +6,13 @@ RSpec.describe MoviesController, type: :controller do
     Movie.create(create_params[:movie])
   end
 
-  it_behaves_like "a medium"
+  let(:show_path) do
+     movie_path(medium.id)
+  end
+
+  
+
+  it_behaves_like "a medium controller"
 
   let(:create_params) do
     {
@@ -62,7 +68,7 @@ RSpec.describe MoviesController, type: :controller do
 
     it "redirects to show page" do
       patch :update, update_params
-      expect(subject).to redirect_to movie_path(medium.id)
+      expect(subject).to redirect_to show_path
     end
 
     it "renders edit template on error" do
@@ -71,6 +77,8 @@ RSpec.describe MoviesController, type: :controller do
     end
 
   end
+
+
 
   describe "DELETE 'destroy'" do
     it "redirects to index page" do

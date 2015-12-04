@@ -6,7 +6,7 @@ RSpec.describe AlbumsController, type: :controller do
     Album.create(create_params[:album])
   end
 
-  it_behaves_like "a medium"
+  it_behaves_like "a medium controller"
 
 
   let(:create_params) do

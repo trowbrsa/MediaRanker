@@ -1,4 +1,4 @@
-RSpec.shared_examples "a medium" do
+RSpec.shared_examples "a medium controller" do
 
   describe "GET 'index'" do
     it "is successful" do
@@ -26,6 +26,20 @@ RSpec.shared_examples "a medium" do
       get :show, id: medium.id
       expect(subject).to render_template :show
     end
+  end
+
+  describe "PATCH 'update'" do
+
+    it "redirects to show page" do
+      patch :update, update_params
+      expect(subject).to redirect_to show_path
+    end
+
+    it "renders edit template on error" do
+    post :update, bad_params
+    expect(subject).to render_template :edit
+    end
+
   end
 
 end
