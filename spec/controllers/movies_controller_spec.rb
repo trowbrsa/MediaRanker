@@ -20,7 +20,7 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   let(:update_params) do
-    { id: movie.id,
+    { id: medium.id,
       movie: {
         title: "Something",
         director: "Uncle Joe",
@@ -31,7 +31,7 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   let(:bad_params) do
-    {id: movie.id,
+    {id: medium.id,
       movie: {title: ""}
     }
   end
@@ -55,7 +55,7 @@ RSpec.describe MoviesController, type: :controller do
 
     it "redirects to show page" do
       patch :update, update_params
-      expect(subject).to redirect_to movie_path(movie.id)
+      expect(subject).to redirect_to movie_path(medium.id)
     end
 
     it "renders edit template on error" do
@@ -79,9 +79,9 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     it "increments :votes" do
-      patch :upvote, id: movie.id
-      movie.reload
-      expect(movie.ranking).to eq 4
+      patch :upvote, id: medium.id
+      medium.reload
+      expect(medium.ranking).to eq 4
       expect(subject).to redirect_to "from_where_I_was"
     end
   end

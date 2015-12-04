@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
+
+  let(:medium) do
+    Movie.create(create_params[:book])
+  end
+
   it_behaves_like "a medium"
 
 
