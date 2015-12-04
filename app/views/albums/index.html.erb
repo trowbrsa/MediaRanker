@@ -1,9 +1,14 @@
-<h1>View all albums</h1>
-
-<ul>
-<% @albums.each do |album| %>
-  <li><%= link_to album.title, album_path(album.id) %></li>
-<% end %>
-</ul>
+<div class="col-lg-12">
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th> Ranking </th>
+        <th> Name </th>
+        <th> Upvote </th>
+      </tr>
+    <% @albums.each do |album| %>
+      <td><%= album.ranking %><td><%= link_to album.title, album_path(album.id) %><td><%= button_for upvote_album_path %>
+    <% end %>
+</div>
 
 <%= link_to "View all media", root_url %>  <%= link_to "Add an album", new_album_path %>
