@@ -1,10 +1,13 @@
-<%= @album.title %>
-<br>
-<%= @album.artist %>
-<br>
-<%= @album.description %>
-<br>
-Ranking: <%= @album.ranking %>
-<br>
-<%= link_to "Edit", edit_album_path %>
-<%= link_to "Delete", album_path, method: :delete %>
+<div class="col-lg-12">
+  <h1>
+    <%= @album.title %>
+    <small><%= @album.artist %></small>
+  </h1>
+  <h4>Ranked: <%= @album.ranking %></h4>
+  <p><%= @album.description %></p>
+  <td><%= button_to "Upvote", upvote_album_path(@album.id), class: "btn btn-primary" %></td>
+  <br>
+<%= link_to "Edit #{@album.title}", edit_album_path, class: "btn btn-default" %>
+<%= link_to "Delete", album_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+<%= link_to "View All Albums", albums_path, class: "btn btn-default" %>
+<%= link_to "View All Media", root_path, class: "btn btn-default" %>
