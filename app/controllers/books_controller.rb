@@ -34,11 +34,19 @@ class BooksController < ApplicationController
   end
 
   def update
+    @value = params[:ranking]
     id = params[:id]
     @book = Book.find(id)
-    @book.update(book_params[:book])
-    redirect_to book_path(params[:id])
+    @book.attributes = book_params[:book]
+      if @book.save
+      redirect_to book_path(params[:id])
+      else
+        @title = "Edit a book"
+        @action = :update
+        render :edit
+      end
   end
+
 
   def destroy
     Book.destroy(params[:id])

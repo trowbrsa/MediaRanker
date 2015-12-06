@@ -32,10 +32,17 @@ class AlbumsController < ApplicationController
   end
 
   def update
+    @value = params[:ranking]
     id = params[:id]
     @album = Album.find(id)
-    @album.update(album_params[:album])
-    redirect_to album_path(params[:id])
+    @album.attributes = album_params[:album]
+      if @album.save
+      redirect_to album_path(params[:id])
+      else
+        @title = "Edit an album"
+        @action = :update
+        render :edit
+      end
   end
 
   def destroy
